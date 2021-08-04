@@ -4,7 +4,7 @@ Do you want to learn how to fuzz like a real expert, but don't know how to start
 
 If so, this is the course for you!
 
-**10 real targets, 10 exercises**
+**10 real targets, 10 exercises** Are you able to solve all 10?
 
 ## Structure
 
