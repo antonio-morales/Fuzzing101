@@ -51,7 +51,10 @@ If so, this is the course for you!
 
 ## Thanks
 
-[Name of all the people that has collaborated with this project]
+Thanks for their help:
+- Xavier RENE-CORAIL
+- Alan Vivona
+- Jason White
 
 ## Contact
 
