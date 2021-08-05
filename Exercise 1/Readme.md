@@ -50,7 +50,7 @@ mkdir fuzzing_xpdf && cd fuzzing_xpdf/
 ```
 To get your environment fully ready, you may need to install some additional tools (namely make and gcc) 
 ```
-sudo apt install build-essentials
+sudo apt install build-essential
 ```
 
 Download Xpdf 3.02:
@@ -160,7 +160,7 @@ make clean
 And now we're going to build xpdf using the **afl-clang-fast** compiler:
 ```
 export LLVM_CONFIG="llvm-config-11"
-CC=$HOME/fuzzing_xpdf/AFLplusplus/afl-clang-fast CXX=$HOME/fuzzing_xpdf/AFLplusplus/afl-clang-fast++ ./configure --prefix="$HOME/fuzzing_xpdf/install/"
+CC=$HOME/AFLplusplus/afl-clang-fast CXX=$HOME/AFLplusplus/afl-clang-fast++ ./configure --prefix="$HOME/fuzzing_xpdf/install/"
 make
 make install
 ```
