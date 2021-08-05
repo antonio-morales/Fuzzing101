@@ -55,7 +55,7 @@ If so, this is the course for you!
 
 Thanks for their help:
 - [Xavier RENE-CORAIL](https://github.com/xcorail)
-- Alan Vivona
+- [Alan Vivona](https://github.com/alanvivona)
 - Jason White
 - [Octavio Gianatiempo](https://github.com/ogianatiempo)
 
