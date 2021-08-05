@@ -54,7 +54,7 @@ If so, this is the course for you!
 ## Thanks
 
 Thanks for their help:
-- Xavier RENE-CORAIL
+- [Xavier RENE-CORAIL](https://github.com/xcorail)
 - Alan Vivona
 - Jason White
 - [Octavio Gianatiempo](https://github.com/ogianatiempo)
