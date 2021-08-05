@@ -57,7 +57,7 @@ Thanks for their help:
 - Xavier RENE-CORAIL
 - Alan Vivona
 - Jason White
-- @ogianatiempo
+- [Octavio Gianatiempo](https://github.com/ogianatiempo)
 
 ## Contact
 
