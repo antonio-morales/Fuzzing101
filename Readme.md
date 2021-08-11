@@ -11,7 +11,7 @@ If so, this is the course for you!
 | Exercise No.  | Target | Time estimated | Main topics |
 | ------------- | ------------- | ------------- | ------------- |
 | [Exercise 1](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%201) | Xpdf  | 120 mins | afl-clang-fast, afl-fuzz, GDB |
-| Exercise 2  | will be released soon  | | |
+| [Exercise 2](https://github.com/antonio-morales/Fuzzing-101/tree/main/Exercise%202)  | libexif  | 6 hours | afl-clang-lto, fuzz libraries, Eclipse IDE|
 | Exercise 3  | will be released soon  | | |
 | Exercise 4  | will be released soon  | | |
 | Exercise 5  | will be released soon  | | |
