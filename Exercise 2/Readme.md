@@ -136,7 +136,7 @@ And the output should look like
 
 ### Afl-clang-lto instrumentation
 
-Now we're going to build xpdf using **afl-clang-lto** as the compiler. 
+Now we're going to build libexif using **afl-clang-lto** as the compiler. 
 
 ```
 rm -r $HOME/fuzzing_libexif/install
