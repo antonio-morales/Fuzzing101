@@ -58,6 +58,7 @@ Thanks for their help:
 - [Alan Vivona](https://github.com/alanvivona)
 - [Jason White](https://github.com/misfir3)
 - [Octavio Gianatiempo](https://github.com/ogianatiempo)
+- [van Hauser](https://github.com/vanhauser-thc)
 
 ## Contact
 
