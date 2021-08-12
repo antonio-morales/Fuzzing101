@@ -24,13 +24,13 @@ If so, this is the course for you!
 
 ## Who is the course intended for?
 - Anyone wishing to learn fuzzing basics
-- Anyone who wants to learn to find vulnerabilities in real software projects.
+- Anyone who wants to learn how to find vulnerabilities in real software projects.
 
 ## Requirements
 - All you need for this course is a running Linux system with an internet connection. You will find a suitable VMware image in the exercises.
-- Basic Linux skills are desirable.
-- All the exercises have been tested in Ubuntu **20.04.2 LTS**. You can download it from [here](https://ubuntu.com/download/desktop/thank-you?version=20.04.2.0&architecture=amd64)
-- In this course we're going to use [AFL++](https://github.com/AFLplusplus/AFLplusplus), a newer and superior fork of Michał Zalewski's AFL, for solving the fuzzing exercises.
+- At least basic Linux skills are highly recommended.
+- All the exercises have been tested on Ubuntu **20.04.2 LTS**. You can download it from [here](https://ubuntu.com/download/desktop/thank-you?version=20.04.2.0&architecture=amd64)
+- In this course we're going to use [AFL++](https://github.com/AFLplusplus/AFLplusplus), a newer and superior fork of Michał "lcamtuf" Zalewski's AFL, for solving the fuzzing exercises.
 
 ## What is fuzzing?
 
@@ -40,7 +40,7 @@ If so, this is the course for you!
 
 ###  Coverage-guided evolutionary fuzzer
 
-- **Evolutionary**: is a metaheuristic approach inspired by evolutionary algorithms, which basically consists in the evolution and mutation of the initial subset over time, by using a selection criteria (ex. coverage).
+- **Evolutionary**: is a metaheuristic approach inspired by evolutionary algorithms, which basically consists in the evolution and mutation of the initial subset (seeds) over time, by using a selection criteria (ex. coverage).
 
 - **Coverage-guided**: To increase the chance of finding new crashes, coverage-guided fuzzers gather and compare code coverage data between different inputs (usually through instrumentation) and pick those inputs which lead to new execution paths.
 
@@ -48,7 +48,7 @@ If so, this is the course for you!
 <img src="./Diagram.png">
 
 <p align="center">
-  Simplification of the functioning of a coverage-guided evolutionary fuzzer
+  Simplification of the coverage gathering process of a coverage-guided evolutionary fuzzer
 </p>
 
 ## Thanks
@@ -61,7 +61,7 @@ Thanks for their help:
 
 ## Contact
 
-Are you stuck and looking for help? Do you have suggestions for making this course better or just positive feedback so that we create more similar content?
-Do you want to share your fuzing experience with the community?
+Are you stuck and looking for help? Do you have suggestions for making this course better or just positive feedback so that we can create more fuzzing content?
+Do you want to share your fuzzing experience with the community?
 Join the GitHub Security Lab Slack and head to the `#fuzzing` channel. [Request an invite to the GitHub Security Lab Slack](mailto:securitylab-social@github.com?subject=Request%20an%20invite%20to%20the%20GitHub%20Security%20Lab%20Slack)
 
