@@ -28,8 +28,8 @@ After completing this exercise, you will know the basis of fuzzing with AFL, suc
 - If you find a new vulnerability, **please submit a security report** to the project. If you need help or have any doubt about the process, the [GitHub Security Lab](mailto:securitylab.github.com) can help you with it :)
 
 ## Contact
-Are you stuck and looking for help? Do you have suggestions for making this course better or just positive feedback so that we create more similar content?
-Do you want to share your fuzing experience with the community?
+Are you stuck and looking for help? Do you have suggestions for making this course better or just positive feedback so that we create more fuzzing content?
+Do you want to share your fuzzing experience with the community?
 Join the GitHub Security Lab Slack and head to the `#fuzzing` channel. [Request an invite to the GitHub Security Lab Slack](mailto:securitylab-social@github.com?subject=Request%20an%20invite%20to%20the%20GitHub%20Security%20Lab%20Slack)
 
 ## Environment
