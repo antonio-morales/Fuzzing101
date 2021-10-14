@@ -1,0 +1,26 @@
+--- ../xcf.c	2014-08-20 08:27:58.000000000 -0700
++++ ./app/xcf/xcf.c	2021-10-11 13:02:42.800831192 -0700
+@@ -277,6 +277,10 @@
+ 
+   filename = g_value_get_string (&args->values[1]);
+ 
++#ifdef __AFL_COMPILER
++  while(__AFL_LOOP(10000)){
++#endif
++
+   info.fp = g_fopen (filename, "rb");
+ 
+   if (info.fp)
+@@ -366,6 +370,12 @@
+   if (success)
+     gimp_value_set_image (&return_vals->values[1], image);
+ 
++#ifdef __AFL_COMPILER
++  }
++#endif
++
++  exit(0);
++
+   gimp_unset_busy (gimp);
+ 
+   return return_vals;
