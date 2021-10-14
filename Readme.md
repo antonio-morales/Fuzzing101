@@ -15,7 +15,7 @@ If so, this is the course for you!
 | [Exercise 3](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%203)  | TCPdump  | CVE-2017-13028 | 4 hours | ASan |
 | [Exercise 4](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%204)  | LibTIFF  | CVE-2016-9297 | 3 hours | Code coverage, LCOV |
 | [Exercise 5](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%205)  | Libxml2  | CVE-2017-9048 | 3 hours | Dictionaries, Basic parallelization  |
-| Exercise 6  | will be released soon  | | |
+| [Exercise 6](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%206)  | GIMP  | CVE-2016-4994, Bonus bugs | 7 hours | Persistent fuzzing |
 | Exercise 7  | will be released soon  | | |
 | Exercise 8  | will be released soon  | | |
 | Exercise 9  | will be released soon  | | |
