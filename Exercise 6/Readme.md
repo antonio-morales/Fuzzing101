@@ -48,7 +48,7 @@ afl-fuzz supports a working mode that combines the benefits of in-process fuzzin
 
 In persistent mode, AFL++ fuzzes a target multiple times in a single forked process, instead of forking a new process for each fuzz execution. This mode can improve the fuzzing speed up to 20X times.
 
-The basic structure of the program that does this would be:
+The basic structure of the target would be as follows:
 ```C
   //Program initialization
 
