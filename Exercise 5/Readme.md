@@ -145,7 +145,7 @@ cd ..
 ```
 ### Fuzzing time
   
-In order to catch the bug, is mandatory to enable the `--valid` parameter. I also set the dictionary path with the **-x flag** and enable the deterministic mutations with the **-D flag** (only for the master fuzzer):
+In order to catch the bug, is mandatory to enable the `--valid` parameter. I also set the dictionary path with the **-x flag** and enabled the deterministic mutations with the **-D flag** (only for the master fuzzer):
 
 For example, I ran the fuzzer with the following command 
 ```
