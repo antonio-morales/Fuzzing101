@@ -145,11 +145,11 @@ cd ..
 ```
 ### Fuzzing time
   
-In order to catch the bug, is mandatory to enable the `--valid` parameter.
+In order to catch the bug, is mandatory to enable the `--valid` parameter. I also set the dictionary path with the **-x flag** and enable the deterministic mutations with the **-D flag** (only for the master fuzzer):
 
-For example, I ran the fuzzer with the following command:
+For example, I ran the fuzzer with the following command 
 ```
-afl-fuzz -m none -i ./afl_in -o afl_out -s 123 -M master -- ./xmllint --memory --noenc --nocdata --dtdattr --loaddtd --valid --xinclude @@
+afl-fuzz -m none -i ./afl_in -o afl_out -s 123 -x xml.dict -D -M master -- ./xmllint --memory --noenc --nocdata --dtdattr --loaddtd --valid --xinclude @@
 ```
 
 You can run another slave instance with:
