@@ -182,7 +182,7 @@ After a while, you should have multiple crashes:
   
 The ASan trace may look like:
   
-![](Images/Image3.png)  
+![](Images/image3.png)  
   
 ### Fix the issues
   
