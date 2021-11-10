@@ -1,0 +1,80 @@
+demux/asf/asf.c
+demux/asf/asfpacket.c
+demux/asf/libasf.c
+vlc.c
+
+#fun: Demux
+fun: WaitKeyframe
+fun: SeekPercent
+fun: SeekIndex
+fun: SeekPrepare
+#fun: Control
+fun: Packet_SetAR
+fun: Packet_SetSendTime
+fun: Packet_UpdateTime
+fun: Packet_GetTrackInfo
+fun: Packet_DoSkip
+fun: Packet_Enqueue
+fun: Block_Dequeue
+fun: ASF_fillup_es_priorities_ex
+fun: ASF_fillup_es_bitrate_priorities_ex
+fun: DemuxInit
+fun: FlushQueue
+fun: FlushQueues
+fun: DemuxEnd
+
+
+fun: AsfObjectHelperHave
+fun: AsfObjectHelperSkip
+fun: AsfObjectHelperReadString
+fun: ASF_ReadObjectCommon
+fun: ASF_NextObject
+fun: ASF_FreeObject_Null
+fun: ASF_ReadObject_Header
+fun: ASF_ReadObject_Data
+fun: ASF_ReadObject_Index
+fun: ASF_FreeObject_Index
+fun: ASF_ReadObject_file_properties
+fun: ASF_FreeObject_metadata
+fun: ASF_ReadObject_metadata
+fun: ASF_ReadObject_header_extension
+fun: ASF_FreeObject_header_extension
+fun: ASF_ReadObject_stream_properties
+fun: ASF_FreeObject_stream_properties
+fun: ASF_FreeObject_codec_list
+fun: ASF_ReadObject_codec_list
+fun: ASF_ReadObject_content_description
+fun: ASF_FreeObject_content_description
+fun: ASF_ReadObject_language_list
+fun: ASF_FreeObject_language_list
+fun: ASF_ReadObject_stream_bitrate_properties
+fun: ASF_FreeObject_stream_bitrate_properties
+fun: ASF_FreeObject_extended_stream_properties
+fun: ASF_ReadObject_extended_stream_properties
+fun: ASF_ReadObject_advanced_mutual_exclusion
+fun: ASF_FreeObject_advanced_mutual_exclusion
+fun: ASF_ReadObject_stream_prioritization
+fun: ASF_FreeObject_stream_prioritization
+fun: ASF_ReadObject_bitrate_mutual_exclusion
+fun: ASF_FreeObject_bitrate_mutual_exclusion
+fun: ASF_FreeObject_extended_content_description
+fun: ASF_ReadObject_marker
+fun: ASF_FreeObject_marker
+fun: ASF_ReadObject_Raw
+fun: ASF_ParentObject
+fun: ASF_GetObject_Function
+fun: ASF_ReadObject
+fun: ASF_FreeObject
+fun: ASF_ObjectDumpDebug
+fun: ASF_ReadObjectRoot
+fun: ASF_FreeObjectRoot
+fun: ASF_CountObject
+fun: ASF_FindObject
+
+
+fun: DemuxSubPayload
+fun: ParsePayloadExtensions
+fun: DemuxPayload
+fun: DemuxASFPacket
+
+

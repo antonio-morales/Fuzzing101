@@ -1,0 +1,10 @@
+--- "libasf (copy).c"	2019-05-23 10:09:46.000000000 -0700
++++ libasf.c	2021-11-04 19:31:01.622973586 -0700
+@@ -1368,6 +1368,7 @@
+     p_mk->i_reserved2 = ASF_READ2();
+     p_mk->name = ASF_READS( ASF_READ2() );
+ 
++    if( p_mk->i_count > 1000000 ) p_mk->i_count = 0; //modified
+     if( p_mk->i_count > 0 )
+     {
+         p_mk->marker = calloc( p_mk->i_count,

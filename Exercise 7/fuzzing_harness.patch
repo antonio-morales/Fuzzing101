@@ -1,0 +1,78 @@
+--- vlc-demux-run_backup.c	2017-11-24 07:29:18.000000000 -0800
++++ vlc-demux-run.c	2021-11-04 19:03:32.966251147 -0700
+@@ -31,7 +31,7 @@
+ #include <stdio.h>
+ #include "src/input/demux-run.h"
+ 
+-int main(int argc, char *argv[])
++int main2(int argc, char *argv[])
+ {
+     const char *filename;
+     struct vlc_run_args args;
+@@ -49,3 +49,66 @@
+ 
+     return -vlc_demux_process_path(&args, filename);
+ }
++
++//#include <fstream>
++#include <errno.h>
++#include <stdlib.h>
++#include <fcntl.h>
++
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++
++#include <inttypes.h>
++
++int main(int argc, char **argv){
++
++	if (argc != 2) {
++		fprintf(stderr, "Usage %s <input file> \n", argv[0]);
++		return -1;
++	}
++	
++	struct vlc_run_args args;
++	libvlc_instance_t *vlc;
++
++	vlc_run_args_init(&args);
++	vlc = libvlc_create(&args);
++
++	int len;
++	unsigned char *buf;
++
++	//string filename(argv[1]);
++
++#ifdef __AFL_COMPILER
++
++	while (__AFL_LOOP(1000)) {
++
++#endif
++
++		int fd = open(argv[1], O_RDONLY);
++
++		if(fd < 0){
++			printf("Error opening file \n");
++			printf("Errno: %i\n", errno);
++			return -1;
++		}
++
++		struct stat st;
++		stat(argv[1], &st);
++		len = st.st_size;
++
++		buf = (unsigned char *)malloc(len);
++
++		read(fd, buf, len);
++
++//		libvlc_demux_process_memory(vlc, &args, buf, len);
++
++		vlc_demux_process_memory(&args, buf, len);
++
++#ifdef __AFL_COMPILER
++
++	}
++
++#endif
++
++}
