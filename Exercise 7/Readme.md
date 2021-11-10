@@ -6,7 +6,7 @@ For this exercise, we will fuzz **VLC** media player. The goal is to find a cras
   <summary>For more information about CVE-2019-14776 vulnerability, click me!</summary>
   --------------------------------------------------------------------------------------------------------
   
-  **CVE-2019-14776** is an Out-of-bounds Read vulneratibily that can be triggered via a crafted WMV/ASF (Windows Media Video) file.
+  **CVE-2019-14776** is an Out-of-bounds Read vulnerability that can be triggered via a crafted WMV/ASF (Windows Media Video) file.
   
  An Out-of-bounds Read is a vulnerability that occurs when the program reads data past the end, or before the beginning, of the intended buffer.
 
@@ -23,7 +23,7 @@ Once you complete this exercise you will know:
 - How to write fuzzing harnesses to test large applications more efficiently
 
 ## Read Before Start
-- I suggest you to try to **solve the exercise by yourself** without checking the solution. Try as hard as you can, and only if you get stuck, check out the example solution below.
+- I suggest you try to **solve the exercise by yourself** without checking the solution. Try as hard as you can, and only if you get stuck, check out the example solution below.
 - AFL uses a non-deterministic testing algorithm, so two fuzzing sessions are never the same. That's why I highly recommend **to set a fixed seed (-s 123)**. This way your fuzzing results will be similar to those shown here and that will allow you to follow the exercises more easily.  
 - If you find a new vulnerability, **please submit a security report** to the project. If you need help or have any doubt about the process, the [GitHub Security Lab](mailto:securitylab.github.com) can help you with it :)
 
@@ -79,7 +79,7 @@ cd $HOME
 mkdir fuzzing_vlc && cd fuzzing_vlc
 ```
   
-Download and uncompressvlc-3.0.7.1.tar.xz:
+Download and uncompress vlc-3.0.7.1.tar.xz:
 ```
 wget https://download.videolan.org/pub/videolan/vlc/3.0.7.1/vlc-3.0.7.1.tar.xz
 tar -xvf vlc-3.0.7.1.tar.xz && cd vlc-3.0.7.1/
@@ -105,7 +105,7 @@ and you should see something like that
  
 You can find a lot of video samples in the [ffmpeg samples repository](https://samples.ffmpeg.org/)
   
-I advise you to pick some samples and then, to use a video editor to shrink the video file to smallest size possible. 
+I advise you to pick some samples and then, use a video editor to shrink the video file to the smallest size possible. 
   
 These are some examples of open-source video editors:
   
@@ -117,13 +117,13 @@ Or more easily, just copy the [short2.wmv](./InputCorpus/short2.wmv) and [verysh
   
 ### Fuzzing harness
   
-If you try to fuzz directly the ``vlc-static`` binary you'll see that AFL only get a few executions per second. This is because VLC startup is very time consuming.
+If you try to fuzz directly the ``vlc-static`` binary you'll see that AFL only gets a few executions per second. This is because VLC startup is very time-consuming.
   
-That's why I recommend you to create a custom fuzzing harness for fuzzing VLC.
+That's why I recommend you create a custom fuzzing harness for fuzzing VLC.
   
 Since the bug exists in the ASF demuxing, I call to the ``vlc_demux_process_memory``
   
-I chose to modify the ``./test/vlc-demux-run.c`` file to include my fuzzing harness. In this way, you can compile the harness just doing:
+I chose to modify the ``./test/vlc-demux-run.c`` file to include my fuzzing harness. In this way, you can compile the harness just by doing:
   
 ```
 cd test
@@ -136,9 +136,9 @@ You can find my code changes [here](./fuzzing_harness.patch)
   
 ### Partial instrumentation
   
-At first I tried just including the filenames involved in ASF demuxing. Unfortunately, this approach didn't work.
+At first, I tried just including the filenames involved in ASF demuxing. Unfortunately, this approach didn't work.
 
-It seems that matching on filenames is [not always possible](https://github.com/AFLplusplus/AFLplusplus/issues/1018#issuecomment-879045408), so I opted for a mixing aproach including function matching and filename matching:
+It seems that matching on filenames is [not always possible](https://github.com/AFLplusplus/AFLplusplus/issues/1018#issuecomment-879045408), so I opted for a mixing approach including function matching and filename matching:
   
 
 ![](Images/image2.png)  
