@@ -117,11 +117,7 @@ Or more easily, just copy the [short2.wmv](./InputCorpus/short2.wmv) and [verysh
   
 ### Fuzzing harness
   
-If you try to fuzz directly the ``vlc-static`` binary you'll see that AFL only gets a few executions per second. This is because VLC startup is very time-consuming.
-  
-That's why I recommend you create a custom fuzzing harness for fuzzing VLC.
-  
-Since the bug exists in the ASF demuxing, I call to the ``vlc_demux_process_memory``
+If you try to fuzz directly the ``vlc-static`` binary you'll see that AFL only gets a few executions per second. This is because VLC startup is very time-consuming. That's why I recommend you create a **custom fuzzing harness** for fuzzing VLC.
   
 I chose to modify the ``./test/vlc-demux-run.c`` file to include my fuzzing harness. In this way, you can compile the harness just by doing:
   
@@ -131,7 +127,7 @@ make vlc-demux-run -j$(nproc) LDFLAGS="-fsanitize=address"
 cd ..  
 ```
   
-You can find my code changes [here](./fuzzing_harness.patch)
+Since the bug exists in the ASF demuxing, I call to the ``vlc_demux_process_memory`` function. This function try to demux a data buffer previously stored in the memory. You can find my code changes [here](./fuzzing_harness.patch)
   
   
 ### Partial instrumentation
