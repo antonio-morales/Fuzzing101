@@ -172,7 +172,7 @@ Some notes:
 
   
 After a while, you should have multiple crashes:
-![](Images/Image2.png)  
+![](Images/image1.png)  
 
 ### Triage
   
@@ -182,7 +182,7 @@ The ASan trace may look like:
   
 ### Fix the issues
   
-The last step of the exercise is to fix both bugs. Rebuild your target after the fixes and check that your PoCs don't crash the program anymore. This last part is left as an exercise for the student.
+The last step of the exercise is to fix the bug. Rebuild your target after the fix and check that your PoC doesn't crash the program anymore. This last part is left as an exercise for the student.
   
   <details>
   <summary>Solution inside</summary>
