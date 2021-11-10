@@ -67,7 +67,7 @@ You can find more information about AFL++ persistent mode at: https://github.com
 
 ## Do it yourself!
 In order to complete this exercise, you need to:
-1) Find an efficient of modifying GIMP source code to enable AFL persistent mode
+1) Find an efficient way of modifying GIMP source code to enable AFL persistent mode
 2) Create a seed corpus of XCF samples
 3) Optional: Create a fuzzing dictionary for the XCF file format
 4) Fuzz GIMP until you have a few unique crashes. I recommend you to use as many AFL instances as possible (CPU cores)
