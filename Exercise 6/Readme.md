@@ -192,7 +192,7 @@ The last step of the exercise is to fix both bugs. Rebuild your target after the
     
    </details> 
 
-Alternatively, you can download a newer version of libexif, and check that both bugs have been fixed.
+Alternatively, you can download a newer version of GIMP, and check that both bugs have been fixed.
   
   
 ### Bonus
