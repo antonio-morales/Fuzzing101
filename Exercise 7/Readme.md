@@ -194,5 +194,5 @@ The last step of the exercise is to fix the bug. Rebuild your target after the f
     
    </details> 
 
-Alternatively, you can download a newer version of libexif, and check that both bugs have been fixed.
+Alternatively, you can download a newer version of VLC, and check that both bugs have been fixed.
   
