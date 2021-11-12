@@ -59,6 +59,7 @@ Thanks for their help:
 - [Jason White](https://github.com/misfir3)
 - [Octavio Gianatiempo](https://github.com/ogianatiempo)
 - [van Hauser](https://github.com/vanhauser-thc)
+- [Marc Poulhiès](https://github.com/dkm)
 
 ## Contact
 
