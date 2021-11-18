@@ -156,6 +156,8 @@ You can run another slave instance with:
 ```
 afl-fuzz -m none -i ./afl_in -o afl_out -s 234 -S slave1 -- ./xmllint --memory --noenc --nocdata --dtdattr --loaddtd --valid --xinclude @@
 ```
+  
+**Are you interested in fuzzing command-line arguments?** Take a look to the following [blog post](https://securitylab.github.com/research/fuzzing-challenges-solutions-1/), to the "Fuzzing command-line arguments" section.
 
 After a while, you should have multiple crashes:
   
