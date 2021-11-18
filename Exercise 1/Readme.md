@@ -131,7 +131,7 @@ You can install everything in two ways:
   ```
   and then type
   ```
-  export $HOME="/home"
+  export HOME="/home"
   ```
 </details>
 
