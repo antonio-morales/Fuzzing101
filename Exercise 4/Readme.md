@@ -149,7 +149,7 @@ make clean
 
 Now, we set AFL_USE_ASAN=1 before calling make:
 ```
-export LLVM_CONFIG="llvm-config-11"
+export LLVM_CONFIG="llvm-config-12"
 CC=afl-clang-lto ./configure --prefix="$HOME/fuzzing_tiff/install/" --disable-shared
 AFL_USE_ASAN=1 make -j4
 AFL_USE_ASAN=1 make install

@@ -29,9 +29,9 @@ This time we will fuzz **libexif** EXIF parsing library. The goal is to find a c
 
 ## What you will learn
 Once you complete this exercise you will know how:
-- To fuzz a library using an external aplication
+- To fuzz a library using an external application.
 - To use **afl-clang-lto**, a collision free instrumentation that is faster and provides better results than *afl-clang-fast*.
-- To use Eclipse IDE as an easy alternative to GDB console for triaging
+- To use Eclipse IDE as an easy alternative to GDB console for triaging.
 
 ## Read Before Start
 - I suggest you to try to **solve the exercise by yourself** without checking the solution. Try as hard as you can, and only if you get stuck, check out the example solution below.
@@ -70,46 +70,48 @@ In order to complete this exercise, you need to:
 ### Download and build your target
 
 Let's first get our fuzzing target. Create a new directory for the project we want to fuzz:
-```
+```shell
 cd $HOME
 mkdir fuzzing_libexif && cd fuzzing_libexif/
 ```
 
 Download and uncompress libexif-0.6.14:
-```
+```shell
 wget https://github.com/libexif/libexif/archive/refs/tags/libexif-0_6_14-release.tar.gz
 tar -xzvf libexif-0_6_14-release.tar.gz
 ```
   
 Build and install libexif:
 
-```
+```shell
 cd libexif-libexif-0_6_14-release/
-sudo apt-get install autopoint libtool gettext libpopt-dev
+sudo apt-get update && sudo apt-get install -y autopoint libtool gettext libpopt-dev
 autoreconf -fvi
 ./configure --enable-shared=no --prefix="$HOME/fuzzing_libexif/install/"
-make
+make -j$(nproc)
 make install
 ```
 
 ### Choosing an interface application
   
 Since libexif is a library, we'll need another application that makes use of this library and which will be fuzzed. For this task we're going to use **exif command-line**. Type the following for download and uncompressing exif command-line 0.6.15:
-```
+```shell
+cd $HOME/fuzzing_libexif
 wget https://github.com/libexif/exif/archive/refs/tags/exif-0_6_15-release.tar.gz
 tar -xzvf exif-0_6_15-release.tar.gz
 ```
 
 Now, we can build and install exif command-line utility:
-```
-cd ..
+```shell
 cd exif-exif-0_6_15-release/
 autoreconf -fvi
 ./configure --enable-shared=no --prefix="$HOME/fuzzing_libexif/install/" PKG_CONFIG_PATH=$HOME/fuzzing_libexif/install/lib/pkgconfig
+make -j$(nproc)
+make install
 ```
   
 To test everything is working properly, just type:
-```
+```shell
 $HOME/fuzzing_libexif/install/bin/exif
 ```
   
@@ -120,14 +122,14 @@ and you should see something like that
 ### Seed corpus creation
   
 Now we need to get some exif samples. We're gonna use the sample images from the following repo: https://github.com/ianare/exif-samples. You can download it with:
-```
+```shell
 cd $HOME/fuzzing_libexif
 wget https://github.com/ianare/exif-samples/archive/refs/heads/master.zip
 unzip master.zip
 ```
   
 As an example, we can do:
-```
+```shell
 $HOME/fuzzing_libexif/install/bin/exif $HOME/fuzzing_libexif/exif-samples-master/jpg/Canon_40D_photoshop_import.jpg
 ```
   
@@ -138,22 +140,22 @@ And the output should look like
 
 Now we're going to build libexif using **afl-clang-lto** as the compiler. 
 
-```
+```shell
 rm -r $HOME/fuzzing_libexif/install
 cd $HOME/fuzzing_libexif/libexif-libexif-0_6_14-release/
 make clean
-export LLVM_CONFIG="llvm-config-11"
+export LLVM_CONFIG="llvm-config-12"
 CC=afl-clang-lto ./configure --enable-shared=no --prefix="$HOME/fuzzing_libexif/install/"
-make
+make -j$(nproc)
 make install
 ```
 
-```
+```shell
 cd $HOME/fuzzing_libexif/exif-exif-0_6_15-release
 make clean
-export LLVM_CONFIG="llvm-config-11"
+export LLVM_CONFIG="llvm-config-12"
 CC=afl-clang-lto ./configure --enable-shared=no --prefix="$HOME/fuzzing_libexif/install/" PKG_CONFIG_PATH=$HOME/fuzzing_libexif/install/lib/pkgconfig
-make
+make -j$(nproc)
 make install
 ```
 
@@ -190,7 +192,7 @@ If you are not sure about when to use *afl-clang-lto* or *afl-clang-fast* you ca
 ### Fuzzing time
 
 Now, you can run the fuzzer with the following command:
-```
+```shell
 afl-fuzz -i $HOME/fuzzing_libexif/exif-samples-master/jpg/ -o $HOME/fuzzing_libexif/out/ -s 123 -- $HOME/fuzzing_libexif/install/bin/exif @@
 ```
   
@@ -208,12 +210,12 @@ First of all, we can download it from:
 https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-03/R/eclipse-cpp-2021-03-R-linux-gtk-x86_64.tar.gz
 
 If JAVA-SDK is not installed on your system, you can install it on Ubuntu with the following command:
-```
+```shell
 sudo apt install default-jdk
 ```
   
 Then we can extract it with:
-```
+```shell
 tar -xzvf eclipse-cpp-2021-03-R-linux-gtk-x86_64.tar.gz
 ```
   

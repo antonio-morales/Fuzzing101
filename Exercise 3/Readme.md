@@ -145,7 +145,7 @@ Now, we set `AFL_USE_ASAN=1` before calling make:
 
 ```
 cd $HOME/fuzzing_tcpdump/libpcap-libpcap-1.8.1/
-export LLVM_CONFIG="llvm-config-11"
+export LLVM_CONFIG="llvm-config-12"
 CC=afl-clang-lto ./configure --enable-shared=no --prefix="$HOME/fuzzing_tcpdump/install/"
 AFL_USE_ASAN=1 make
 AFL_USE_ASAN=1 make install
