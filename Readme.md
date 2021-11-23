@@ -23,7 +23,7 @@ If so, this is the course for you!
 
 
 ## Who is the course intended for?
-- Anyone wishing to learn fuzzing basics
+- Anyone wishing to learn fuzzing basics.
 - Anyone who wants to learn how to find vulnerabilities in real software projects.
 
 ## Requirements

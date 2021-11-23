@@ -43,32 +43,32 @@ The username / password for this VM are `fuzz` / `fuzz`.
 ## Download and build your target
 
 Let's first get our fuzzing target. Create a new directory for the project you want to fuzz:
-```
+```shell
 cd $HOME
 mkdir fuzzing_xpdf && cd fuzzing_xpdf/
 ```
-To get your environment fully ready, you may need to install some additional tools (namely make and gcc) 
-```
-sudo apt install build-essential
+To get your environment fully ready, you may need to install some additional tools (namely make and gcc):
+```shell
+sudo apt-get update && sudo apt install -y build-essential
 ```
 
 Download Xpdf 3.02:
-```
+```shell
 wget https://dl.xpdfreader.com/old/xpdf-3.02.tar.gz
 tar -xvzf xpdf-3.02.tar.gz
 ```
 
 Build Xpdf:
-```
+```shell
 cd xpdf-3.02
 sudo apt update && sudo apt install -y build-essential gcc
 ./configure --prefix="$HOME/fuzzing_xpdf/install/"
-make
+make -j$(nproc)
 make install
 ```
 
 Time to test the build. First of all, You'll need to download a few PDF examples:
-```
+```shell
 cd $HOME/fuzzing_xpdf
 mkdir pdf_examples && cd pdf_examples
 wget https://github.com/mozilla/pdf.js-sample-files/raw/master/helloworld.pdf
@@ -77,7 +77,7 @@ wget https://www.melbpc.org.au/wp-content/uploads/2017/10/small-example-pdf-file
 ```
 
 Now, we can test the pdfinfo binary with:
-```
+```shell
 $HOME/fuzzing_xpdf/install/bin/pdfinfo -box -meta $HOME/fuzzing_xpdf/pdf_examples/helloworld.pdf
 ```
 
@@ -88,26 +88,26 @@ You should see something like this:
 ## Install AFL++
 For this course, we're going to use the latest version of [AFL++ fuzzer](https://github.com/AFLplusplus/AFLplusplus). 
 
-You can install everything in two ways:  
+You can install everything in two ways: 
 
 <details>
   <summary>Local installation (recommended option)</summary>
   
   Install the dependencies
 
-  ```
+  ```shell
   sudo apt-get update
   sudo apt-get install -y build-essential python3-dev automake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools
-  sudo apt-get install -y lld-11 llvm-11 llvm-11-dev clang-11 || sudo apt-get install -y lld llvm llvm-dev clang 
+  sudo apt-get install -y lld-12 llvm-12 llvm-12-dev clang-12 || sudo apt-get install -y lld llvm llvm-dev clang
   sudo apt-get install -y gcc-$(gcc --version|head -n1|sed 's/.* //'|sed 's/\..*//')-plugin-dev libstdc++-$(gcc --version|head -n1|sed 's/.* //'|sed 's/\..*//')-dev
   ```
 
   Checkout and build AFL++
-  ```
+  ```shell
   cd $HOME
   git clone https://github.com/AFLplusplus/AFLplusplus && cd AFLplusplus
-  export LLVM_CONFIG="llvm-config-11"
-  make distrib
+  export LLVM_CONFIG="llvm-config-12"
+  make -j$(nproc) source-only # 'make distrib' for both binary-only and source code fuzzing
   sudo make install
   ```
 </details>
@@ -116,21 +116,21 @@ You can install everything in two ways:
   <summary>Docker image</summary>
   
   Install docker
-  ```
+  ```shell
   sudo apt install docker
   ```
   
   Pull the image
-  ```
+  ```shell
   docker pull aflplusplus/aflplusplus
   ```
   
   Launch the AFLPlusPlus docker container:
-  ```
+  ```shell
   docker run -ti -v $HOME:/home aflplusplus/aflplusplus
   ```
   and then type
-  ```
+  ```shell
   export $HOME="/home"
   ```
 </details>
@@ -150,22 +150,22 @@ AFL is a **coverage-guided fuzzer**, which means that it gathers coverage inform
 To enable instrumentation for our target application, we need to compile the code with AFL's compilers. 
 
 First of all, we're going to clean all previously compiled object files and executables:
-```
+```shell
 rm -r $HOME/fuzzing_xpdf/install
 cd $HOME/fuzzing_xpdf/xpdf-3.02/
 make clean
 ```
 
 And now we're going to build xpdf using the **afl-clang-fast** compiler:
-```
-export LLVM_CONFIG="llvm-config-11"
+```shell
+export LLVM_CONFIG="llvm-config-12"
 CC=$HOME/AFLplusplus/afl-clang-fast CXX=$HOME/AFLplusplus/afl-clang-fast++ ./configure --prefix="$HOME/fuzzing_xpdf/install/"
-make
+make -j$(nproc)
 make install
 ```
 
 Now, you can run the fuzzer with the following command:
-```
+```shell
 afl-fuzz -i $HOME/fuzzing_xpdf/pdf_examples/ -o $HOME/fuzzing_xpdf/out/ -s 123 -- $HOME/fuzzing_xpdf/install/bin/pdftotext @@ $HOME/fuzzing_xpdf/output
 ```
 
@@ -179,7 +179,7 @@ So, basically the fuzzer will run the command
 `$HOME/fuzzing_xpdf/install/bin/pdftotext <input-file-name> $HOME/fuzzing_xpdf/output` for each different input file.
 
 If you receive a message like *"Hmm, your system is configured to send core dump notifications to an external utility..."*, just do:
-```
+```shell
 sudo su
 echo core >/proc/sys/kernel/core_pattern
 exit
@@ -189,9 +189,9 @@ After a few minutes you should see something like this:
 
 ![](Images/Image3.png)
 
-You can see the **"uniq. crashes"** value in red, showing the number of unique crashes found. You can find these crashes files in the `$HOME/fuzzing_xpdf/out/` directory. You can stop the fuzzer once the first crash is found, this is the one we'll work on. It can take up to one or two hours depending on your machine performance, before you get a crash.
+You can see the **"uniq crashes"** value in red, showing the number of unique crashes found. You can find these crashes files in the `$HOME/fuzzing_xpdf/out/` directory. You can stop the fuzzer once the first crash is found, this is the one we'll work on. It can take up to one or two hours depending on your machine performance, before you get a crash.
 
-A this stage, you have learned: 
+At this stage, you have learned: 
 - How to compile a target using afl compiler with instrumentation
 - How to launch afl++
 - How to detect unique crashes of your target
@@ -218,8 +218,8 @@ Locate the file corresponding to the crash in the `$HOME/fuzzing_xpdf/out/` dire
 ![](Images/Image3_1.png)
 
 Pass this file as input to pdftotext binary
-```
-$HOME/fuzzing_xpdf/install/bin/pdftotext '$HOME/fuzzing_xpdf/out/default/crashes/<your_filename>' $HOME/fuzzing_xpdf/output
+```shell
+$HOME/fuzzing_xpdf/install/bin/pdftotext $HOME/fuzzing_xpdf/out/default/crashes/<your_filename> $HOME/fuzzing_xpdf/output
 ```
 It will cause a segmentation fault and results in a crash of the program.
 
@@ -233,18 +233,18 @@ Use gdb to figure out why the program crashes with this input.
   
 First of all, you need to rebuild Xpdf with debug info to get a symbolic stack trace:
 
-```
+```shell
 rm -r $HOME/fuzzing_xpdf/install
 cd $HOME/fuzzing_xpdf/xpdf-3.02/
 make clean
 CFLAGS="-g -O0" CXXFLAGS="-g -O0" ./configure --prefix="$HOME/fuzzing_xpdf/install/"
-make
+make -j$(nproc)
 make install
 ```
 
 Now, you can run GDB:
 
-```
+```shell
 gdb --args $HOME/fuzzing_xpdf/install/bin/pdftotext $HOME/fuzzing_xpdf/out/default/crashes/<your_filename> $HOME/fuzzing_xpdf/output
 ```
 And then, type inside GDB:
