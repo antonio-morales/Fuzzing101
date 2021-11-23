@@ -266,6 +266,20 @@ Scroll the call stack and you will see many calls of the "Parser::getObj" method
 
 The last step of the exercise is to fix the bug! Rebuild your target after the fix and check that your use case is not causing a segmentation fault anymore. This last part is left as exercise for the student.
 
-Alternatively, you can download Xpdf 4.02 where the bug is already fixed, and check that the segmentation fault disappears.
+Alternatively, you can download Xpdf 4.03 where the bug is already fixed, and check that the segmentation fault disappears.
+
+```shell
+cd $HOME/fuzzing_xpdf
+wget https://dl.xpdfreader.com/xpdf-4.03.tar.gz
+tar -xvzf xpdf-4.03.tar.gz
+cd xpdf-4.03
+sudo snap install cmake --classic
+cmake -DCMAKE_C_FLAGS="-g -O0" -DCMAKE_CXX_FLAGS="-g -O0" -DCMAKE_INSTALL_PREFIX="$HOME/fuzzing_xpdf/install/v4.03" .
+make -j$(nproc)
+make install
+$HOME/fuzzing_xpdf/install/v4.03/bin/pdftotext $HOME/fuzzing_xpdf/out/default/crashes/<your_filename> $HOME/fuzzing_xpdf/output
+```
+
+![](Images/Image6.png)
 
 </details>
