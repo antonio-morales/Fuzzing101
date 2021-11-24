@@ -103,7 +103,6 @@ tar -xzvf exif-0_6_15-release.tar.gz
 
 Now, we can build and install exif command-line utility:
 ```
-cd ..
 cd exif-exif-0_6_15-release/
 autoreconf -fvi
 ./configure --enable-shared=no --prefix="$HOME/fuzzing_libexif/install/" PKG_CONFIG_PATH=$HOME/fuzzing_libexif/install/lib/pkgconfig
