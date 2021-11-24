@@ -1,6 +1,6 @@
 # Exercise 3 - TCPdump
 
-In this exercise we will fuzz **TCPdump** packet analyzer. The goal is to find a crash/PoC for [**CVE-2017-13028**](https://www.cvedetails.com/cve/CVE-2017-13028/) in TCPdump 4.9.2.
+In this exercise we will fuzz **TCPdump** packet analyzer. The goal is to find a crash/PoC for [**CVE-2017-13028**](https://www.cvedetails.com/cve/CVE-2017-13028/) in TCPdump versions prior to 4.9.2.
 
 <details>
   <summary>For more information about CVE-2017-13028 vulnerability, click me!</summary>
@@ -63,10 +63,10 @@ cd $HOME
 mkdir fuzzing_tcpdump && cd fuzzing_tcpdump/
 ```
 
-Download and uncompress tcpdump-4.9.2.tar.gz
+Download and uncompress tcpdump-4.9.1.tar.gz
 ```
-wget https://github.com/the-tcpdump-group/tcpdump/archive/refs/tags/tcpdump-4.9.2.tar.gz
-tar -xzvf tcpdump-4.9.2.tar.gz
+wget https://github.com/the-tcpdump-group/tcpdump/archive/refs/tags/tcpdump-4.9.1.tar.gz
+tar -xzvf tcpdump-4.9.1.tar.gz
 ```
 
 We also need to download libpcap, a cross-platform library that is needed by TCPdump. Download and uncompress libpcap-1.8.1.tar.gz:
@@ -87,7 +87,7 @@ make install
 Now, we can build and install tcpdump:
 ```
 cd ..
-cd tcpdump-tcpdump-4.9.2/
+cd tcpdump-tcpdump-4.9.1/
 CPPFLAGS=-I$HOME/fuzzing_tcpdump/install/include/ LDFLAGS=-L$HOME/fuzzing_tcpdump/install/lib/ ./configure --prefix="$HOME/fuzzing_tcpdump/install/"
 make
 make install
@@ -137,7 +137,7 @@ rm -r $HOME/fuzzing_tcpdump/install
 cd $HOME/fuzzing_tcpdump/libpcap-libpcap-1.8.1/
 make clean
 
-cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/
+cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.1/
 make clean
 ```
 
@@ -150,7 +150,7 @@ CC=afl-clang-lto ./configure --enable-shared=no --prefix="$HOME/fuzzing_tcpdump/
 AFL_USE_ASAN=1 make
 AFL_USE_ASAN=1 make install
 
-cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/
+cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.1/
 CC=afl-clang-lto CPPFLAGS=-I$HOME/fuzzing_tcpdump/install/include/ LDFLAGS=-L$HOME/fuzzing_tcpdump/install/lib/ ./configure --prefix="$HOME/fuzzing_tcpdump/install/"
 AFL_USE_ASAN=1 make
 AFL_USE_ASAN=1 make install
@@ -160,7 +160,7 @@ AFL_USE_ASAN=1 make install
 
 Now, you can run the fuzzer with the following command:
 ```
-afl-fuzz -m none -i $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/tests/ -o $HOME/fuzzing_tcpdump/out/ -s 123 -- $HOME/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r @@
+afl-fuzz -m none -i $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.1/tests/ -o $HOME/fuzzing_tcpdump/out/ -s 123 -- $HOME/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r @@
 ```
 
 **Note: ASAN on 64-bit systems requests a lot of virtual memory. That's why I've set the flag "-m none" that disable memory limits in AFL**
