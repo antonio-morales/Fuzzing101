@@ -60,6 +60,7 @@ Thanks for their help:
 - [Octavio Gianatiempo](https://github.com/ogianatiempo)
 - [van Hauser](https://github.com/vanhauser-thc)
 - [Marc Poulhiès](https://github.com/dkm)
+- [Mundi-Xu](https://github.com/Mundi-Xu)
 
 ## Contact
 
