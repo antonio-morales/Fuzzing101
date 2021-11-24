@@ -191,7 +191,7 @@ After a few minutes you should see something like this:
 
 You can see the **"uniq. crashes"** value in red, showing the number of unique crashes found. You can find these crashes files in the `$HOME/fuzzing_xpdf/out/` directory. You can stop the fuzzer once the first crash is found, this is the one we'll work on. It can take up to one or two hours depending on your machine performance, before you get a crash.
 
-A this stage, you have learned: 
+At this stage, you have learned: 
 - How to compile a target using afl compiler with instrumentation
 - How to launch afl++
 - How to detect unique crashes of your target
