@@ -64,7 +64,7 @@ Thanks for their help:
 - [Octavio Gianatiempo](https://github.com/ogianatiempo)
 - [van Hauser](https://github.com/vanhauser-thc)
 - [Marc Poulhiès](https://github.com/dkm)
-- [Mundi-Xu](https://github.com/Mundi-Xu)
+- [Xu Hanyu](https://github.com/Mundi-Xu)
 - [tclan126](https://github.com/tclan126)
 - [epi052](https://github.com/epi052)
 
