@@ -62,6 +62,7 @@ Thanks for their help:
 - [Marc Poulhiès](https://github.com/dkm)
 - [Mundi-Xu](https://github.com/Mundi-Xu)
 - [tclan126](https://github.com/tclan126)
+- [epi052](https://github.com/epi052)
 
 ## Contact
 
