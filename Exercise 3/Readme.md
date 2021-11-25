@@ -77,7 +77,7 @@ tar -xzvf libpcap-1.8.1.tar.gz
 
 Build and install libpcap:
 ```
-cd libpcap-libpcap-1.8.1/
+cd $HOME/fuzzing_tcpdump/libpcap-libpcap-1.8.1/
 ./configure --enable-shared=no --prefix="$HOME/fuzzing_tcpdump/install/"
 make
 make install
@@ -85,8 +85,7 @@ make install
 
 Now, we can build and install tcpdump:
 ```
-cd ..
-cd tcpdump-tcpdump-4.9.2/
+cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/
 CPPFLAGS=-I$HOME/fuzzing_tcpdump/install/include/ LDFLAGS=-L$HOME/fuzzing_tcpdump/install/lib/ ./configure --prefix="$HOME/fuzzing_tcpdump/install/"
 make
 make install
@@ -147,12 +146,12 @@ cd $HOME/fuzzing_tcpdump/libpcap-libpcap-1.8.1/
 export LLVM_CONFIG="llvm-config-11"
 CC=afl-clang-lto ./configure --enable-shared=no --prefix="$HOME/fuzzing_tcpdump/install/"
 AFL_USE_ASAN=1 make
-AFL_USE_ASAN=1 make install
+make install
 
 cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/
-CC=afl-clang-lto CPPFLAGS=-I$HOME/fuzzing_tcpdump/install/include/ LDFLAGS=-L$HOME/fuzzing_tcpdump/install/lib/ ./configure --prefix="$HOME/fuzzing_tcpdump/install/"
+CC=afl-clang-lto AFL_USE_ASAN=1 CPPFLAGS=-I$HOME/fuzzing_tcpdump/install/include/ LDFLAGS=-L$HOME/fuzzing_tcpdump/install/lib/ ./configure --prefix="$HOME/fuzzing_tcpdump/install/"
 AFL_USE_ASAN=1 make
-AFL_USE_ASAN=1 make install
+make install
 ```  
 
 ### Fuzzing time
