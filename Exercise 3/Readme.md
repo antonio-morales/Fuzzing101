@@ -18,8 +18,8 @@ In this exercise we will fuzz **TCPdump** packet analyzer. The goal is to find a
 
 ## What you will learn
 Once you complete this exercise you will know:
-- What is **ASan (Address Sanitizer)**, a runtime memory error detection tool
-- How to use ASAN to fuzz a target
+- What is [**ASan (Address Sanitizer)**](https://github.com/google/sanitizers/wiki/AddressSanitizer), a runtime memory error detector for C/C++
+- How to use ASan to fuzz a target
 - How much easy is to triage the crashes using ASan
 
 ## Read Before Start
@@ -63,7 +63,7 @@ cd $HOME
 mkdir fuzzing_tcpdump && cd fuzzing_tcpdump/
 ```
 
-Download and uncompress tcpdump-4.9.2.tar.gz
+Download and uncompress tcpdump-4.9.2.tar.gz:
 ```
 wget https://github.com/the-tcpdump-group/tcpdump/archive/refs/tags/tcpdump-4.9.2.tar.gz
 tar -xzvf tcpdump-4.9.2.tar.gz
@@ -76,7 +76,6 @@ tar -xzvf libpcap-1.8.1.tar.gz
 ```
 
 Build and install libpcap:
-
 ```
 cd libpcap-libpcap-1.8.1/
 ./configure --enable-shared=no --prefix="$HOME/fuzzing_tcpdump/install/"
@@ -115,6 +114,7 @@ $HOME/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r ./tests/geneve.pca
 ```
   
 And the output should look like
+
 ![](Images/Image2.png)
   
 ### AddressSanitizer
@@ -142,7 +142,6 @@ make clean
 ```
 
 Now, we set `AFL_USE_ASAN=1` before calling make:
-
 ```
 cd $HOME/fuzzing_tcpdump/libpcap-libpcap-1.8.1/
 export LLVM_CONFIG="llvm-config-11"
@@ -163,7 +162,7 @@ Now, you can run the fuzzer with the following command:
 afl-fuzz -m none -i $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/tests/ -o $HOME/fuzzing_tcpdump/out/ -s 123 -- $HOME/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r @@
 ```
 
-**Note: ASAN on 64-bit systems requests a lot of virtual memory. That's why I've set the flag "-m none" that disable memory limits in AFL**
+**Note: ASan on 64-bit systems requests a lot of virtual memory. That's why I've set the flag "-m none" that disable memory limits in AFL**
   
 After a while, you should have multiple crashes:
   
@@ -173,9 +172,8 @@ After a while, you should have multiple crashes:
 ### Triage
   
 To debug a program built with ASan is so much easier than in the previous exercises. All you need to do is to feed the program with the crash file:
-  
 ```
-$HOME/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r '/home/antonio/fuzzing_tcpdump/out/default/crashes/id:000000,sig:06,src:002318+001583,time:10357087,op:splice,rep:8'
+$HOME/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r $HOME/fuzzing_tcpdump/out/default/crashes/<your_filename>
 ```
 
 and you will get a nice summary of the crash, including the execution trace:
