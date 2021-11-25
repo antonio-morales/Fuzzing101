@@ -75,14 +75,13 @@ wget https://github.com/the-tcpdump-group/libpcap/archive/refs/tags/libpcap-1.8.
 tar -xzvf libpcap-1.8.0.tar.gz
 ```
 
-We need to rename ``libpcap-libpcap-1.8.0`` to ``libpcap-1.8.0``. Otherwise, tcpdump doesn't find the ``libpcap.a`` local path:
+We need to rename `libpcap-libpcap-1.8.0` to `libpcap-1.8.0`. Otherwise, tcpdump doesn't find the `libpcap.a` local path:
 ```
 mv libpcap-libpcap-1.8.0/ libpcap-1.8.0
 ```
   
 Build and install libpcap:
 ```
-
 cd $HOME/fuzzing_tcpdump/libpcap-1.8.0/
 ./configure --enable-shared=no
 make
@@ -147,7 +146,7 @@ cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/
 make clean
 ```
 
-Now, we set `AFL_USE_ASAN=1` before calling ``configure`` and ``make``:
+Now, we set `AFL_USE_ASAN=1` before calling `configure` and `make`:
 
 ```
 cd $HOME/fuzzing_tcpdump/libpcap-1.8.0/
