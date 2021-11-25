@@ -21,6 +21,10 @@ If so, this is the course for you!
 | Exercise 9  | will be released soon  | | |
 | Exercise 10  | will be released soon  || |
 
+## Changelog
+
+- 11/25/2021: Exercise 3 updated with some fixes.
+
 
 ## Who is the course intended for?
 - Anyone wishing to learn fuzzing basics
@@ -61,6 +65,8 @@ Thanks for their help:
 - [van Hauser](https://github.com/vanhauser-thc)
 - [Marc Poulhiès](https://github.com/dkm)
 - [Xu Hanyu](https://github.com/Mundi-Xu)
+- [tclan126](https://github.com/tclan126)
+- [epi052](https://github.com/epi052)
 
 ## Contact
 
