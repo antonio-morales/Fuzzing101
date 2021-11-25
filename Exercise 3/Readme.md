@@ -69,26 +69,29 @@ wget https://github.com/the-tcpdump-group/tcpdump/archive/refs/tags/tcpdump-4.9.
 tar -xzvf tcpdump-4.9.2.tar.gz
 ```
 
-We also need to download libpcap, a cross-platform library that is needed by TCPdump. Download and uncompress libpcap-1.8.1.tar.gz:
+We also need to download libpcap, a cross-platform library that is needed by TCPdump. Download and uncompress libpcap-1.8.0.tar.gz:
 ```
-wget https://github.com/the-tcpdump-group/libpcap/archive/refs/tags/libpcap-1.8.1.tar.gz
-tar -xzvf libpcap-1.8.1.tar.gz
+wget https://github.com/the-tcpdump-group/libpcap/archive/refs/tags/libpcap-1.8.0.tar.gz
+tar -xzvf libpcap-1.8.0.tar.gz
 ```
 
+We need to rename ``libpcap-libpcap-1.8.0`` to ``libpcap-1.8.0``. Otherwise, tcpdump doesn't find the ``libpcap.a`` local path:
+```
+mv libpcap-libpcap-1.8.0/ libpcap-1.8.0
+```
+  
 Build and install libpcap:
 
 ```
-cd libpcap-libpcap-1.8.1/
-./configure --enable-shared=no --prefix="$HOME/fuzzing_tcpdump/install/"
+cd $HOME/fuzzing_tcpdump/libpcap-1.8.0/
+./configure --enable-shared=no
 make
-make install
 ```
 
 Now, we can build and install tcpdump:
 ```
-cd ..
-cd tcpdump-tcpdump-4.9.2/
-CPPFLAGS=-I$HOME/fuzzing_tcpdump/install/include/ LDFLAGS=-L$HOME/fuzzing_tcpdump/install/lib/ ./configure --prefix="$HOME/fuzzing_tcpdump/install/"
+cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/
+./configure --prefix="$HOME/fuzzing_tcpdump/install/"
 make
 make install
 ```
@@ -101,6 +104,8 @@ $HOME/fuzzing_tcpdump/install/sbin/tcpdump -h
 and you should see something like that
 
 ![](Images/Image1.png)
+  
+**Before continuing to the following step, check that your version numbers matches the numbers above**
 
 ### Seed corpus creation
 
@@ -134,28 +139,29 @@ Now we're going to build tcpdump (and libpcap) with ASAN enabled.
 First of all, we're going to clean all previously compiled object files and executables:
 ```
 rm -r $HOME/fuzzing_tcpdump/install
-cd $HOME/fuzzing_tcpdump/libpcap-libpcap-1.8.1/
+cd $HOME/fuzzing_tcpdump/libpcap-1.8.0/
 make clean
 
 cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/
 make clean
 ```
 
-Now, we set `AFL_USE_ASAN=1` before calling make:
+Now, we set `AFL_USE_ASAN=1` before calling ``configure`` and ``make``:
 
 ```
-cd $HOME/fuzzing_tcpdump/libpcap-libpcap-1.8.1/
+cd $HOME/fuzzing_tcpdump/libpcap-1.8.0/
 export LLVM_CONFIG="llvm-config-11"
 CC=afl-clang-lto ./configure --enable-shared=no --prefix="$HOME/fuzzing_tcpdump/install/"
 AFL_USE_ASAN=1 make
-AFL_USE_ASAN=1 make install
 
 cd $HOME/fuzzing_tcpdump/tcpdump-tcpdump-4.9.2/
-CC=afl-clang-lto CPPFLAGS=-I$HOME/fuzzing_tcpdump/install/include/ LDFLAGS=-L$HOME/fuzzing_tcpdump/install/lib/ ./configure --prefix="$HOME/fuzzing_tcpdump/install/"
+AFL_USE_ASAN=1 CC=afl-clang-lto ./configure --prefix="$HOME/fuzzing_tcpdump/install/"
 AFL_USE_ASAN=1 make
 AFL_USE_ASAN=1 make install
 ```  
 
+**Afl-clang-lto compilation can take a few minutes to complete**  
+  
 ### Fuzzing time
 
 Now, you can run the fuzzer with the following command:
