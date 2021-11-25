@@ -24,7 +24,7 @@ If so, this is the course for you!
 
 ## Who is the course intended for?
 - Anyone wishing to learn fuzzing basics
-- Anyone who wants to learn how to find vulnerabilities in real software projects.
+- Anyone who wants to learn how to find vulnerabilities in real software projects
 
 ## Requirements
 - All you need for this course is a running Linux system with an internet connection. You will find a suitable VMware image in the exercises.
@@ -60,7 +60,7 @@ Thanks for their help:
 - [Octavio Gianatiempo](https://github.com/ogianatiempo)
 - [van Hauser](https://github.com/vanhauser-thc)
 - [Marc Poulhiès](https://github.com/dkm)
-- [Mundi-Xu](https://github.com/Mundi-Xu)
+- [Xu Hanyu](https://github.com/Mundi-Xu)
 
 ## Contact
 
