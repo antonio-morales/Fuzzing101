@@ -131,7 +131,7 @@ You can install everything in two ways:
   ```
   and then type
   ```
-  export $HOME="/home"
+  export HOME="/home"
   ```
 </details>
 
@@ -219,7 +219,7 @@ Locate the file corresponding to the crash in the `$HOME/fuzzing_xpdf/out/` dire
 
 Pass this file as input to pdftotext binary
 ```
-$HOME/fuzzing_xpdf/install/bin/pdftotext '$HOME/fuzzing_xpdf/out/default/crashes/<your_filename>' $HOME/fuzzing_xpdf/output
+$HOME/fuzzing_xpdf/install/bin/pdftotext $HOME/fuzzing_xpdf/out/default/crashes/<your_filename> $HOME/fuzzing_xpdf/output
 ```
 It will cause a segmentation fault and results in a crash of the program.
 
