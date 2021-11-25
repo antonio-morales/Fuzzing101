@@ -197,7 +197,7 @@ The last step of the exercise is to fix the bug! Rebuild your target after the f
    --------------------------------------------------------------------------------------------------
     
   Official fix:
-  - https://github.com/the-tcpdump-group/tcpdump/commit/29e5470e6ab84badbc31f4532bb7554a796d9d52
+  - https://github.com/the-tcpdump-group/tcpdump/commit/85078eeaf4bf8fcdc14a4e79b516f92b6ab520fc#diff-05f854a9033643de07f0d0059bc5b98f3b314eeb1e2499ea1057e925e6501ae8L381
     
    </details> 
 
