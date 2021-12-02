@@ -166,9 +166,7 @@ Now, we can generate a callgrind report with:
 ACRO_INSTALL_DIR=/opt/Adobe/Reader9/Reader ACRO_CONFIG=intellinux LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'/opt/Adobe/Reader9/Reader/intellinux/lib' valgrind --tool=callgrind /opt/Adobe/Reader9/Reader/intellinux/bin/acroread -toPostScript [samplePDF]
 ```
 
-where ``samplePDF`` is the path of a PDF sample. 
-
-It will generate a ``callgrind.out`` output file in your current folder. Now you can visualize this report running **kachegrind**. Just type:
+where ``samplePDF`` is the path of a PDF sample. It will generate a ``callgrind.out`` output file in your current folder. Now you can visualize this report running **kachegrind**. Just type:
 
 ```
 kcachegrind 
