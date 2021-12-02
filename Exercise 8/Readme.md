@@ -104,7 +104,7 @@ you can also see the list of available command line options
 
 ### Seed corpus creation
 
-For this exercise I'll make use of a corpus downloaded from **SafeDocs "Issue Tracker" Corpus**. You can find more information about this PDF Corpus [here](https://www.pdfa.org/a-new-stressful-pdf-corpus/).
+For this exercise, I'll make use of a corpus downloaded from **SafeDocs "Issue Tracker" Corpus**. You can find more information about this PDF Corpus [here](https://www.pdfa.org/a-new-stressful-pdf-corpus/).
 
 Download and uncompress the corpus:
 ```
@@ -126,7 +126,7 @@ The simplest way to fuzz closed-source applications is just running afl-fuzz wit
 
 You need to take care when you run afl-fuzz, because ``/opt/Adobe/Reader9/bin/acroread`` is a shell-script. The real binary path is the following one ``/opt/Adobe/Reader9/Reader/intellinux/bin/acroread``.
 
-But if you try to execute it you will get an error like this: ``acroread must be executed from the startup script``. That's why we need to set the ``ACRO_INSTALL_DIR`` and ``ACRO_CONFIG`` envvars. We will also set ``LD_LIBRARY_PATH``to define the directory in which to search for dynamically linkable libraries.
+But if you try to execute it you will get an error like this: ``acroread must be executed from the startup script``. That's why we need to set the ``ACRO_INSTALL_DIR`` and ``ACRO_CONFIG`` envvars. We will also set ``LD_LIBRARY_PATH`` to define the directory in which to search for dynamically linkable libraries.
 
 Said that, you can run the fuzzer with the following command:
 ```
@@ -145,15 +145,15 @@ And the answer is... using Persistent fuzzing!
 
 As we see in [exercise 6](../Exercise%206), inserting the ``AFL_LOOP`` is the way that we have to tell AFL++ that we want to enable the persistent mode. In this case, however, we don't have access to the source code.
 
-We can instead make use of the AFL_QEMU_PERSISTENT_ADDR to specify the start of the persistent loop. I advise you to set this address to the beggining of a function. You can found more information about AFL_QEMU persistent options [here](https://github.com/AFLplusplus/AFLplusplus/blob/stable/qemu_mode/README.persistent.md).
+We can instead make use of the AFL_QEMU_PERSISTENT_ADDR to specify the start of the persistent loop. I advise you to set this address to the beginning of a function. You can find more information about AFL_QEMU persistent options [here](https://github.com/AFLplusplus/AFLplusplus/blob/stable/qemu_mode/README.persistent.md).
 
-For finding an appropiate offset we can make use of a dissasembler like IDA or Ghidra. In my case, I chose the following offset ``0x08546a00``:
+For finding an appropriate offset we can make use of a disassembler like IDA or Ghidra. In my case, I chose the following offset ``0x08546a00``:
 
 ![](Images/6.png)
 
-There is an easier alternative to use a dissasembler: to use **callgrind**.
+There is an easier alternative to use a disassembler: to use **callgrind**.
 
-First of all, we will install valgrind and kcachegrind with the followind command line:
+First of all, we will install valgrind and kcachegrind with the following command line:
 
 ```
 sudo apt-get install valgrind
@@ -176,7 +176,7 @@ and you should see something like this:
 
 ![](Images/8.png)
 
-I recommend you to look at the ``count`` field in kcachegrind to identify functions that only get executed 1 time, and to try to achieve an **stability score over 90%** in afl-fuzz.
+I recommend you to look at the ``count`` field in kcachegrind to identify functions that only get executed 1 time, and to try to achieve a **stability score over 90%** in afl-fuzz.
   
 We will set also the **AFL_QEMU_PERSISTENT_GPR=1** envvar, that will save the original value of general purpose registers and restore them in each persistent cycle.
 
@@ -189,7 +189,7 @@ As you can see, it gives a x4 improvement in time of execution. Not bad!
 
 ![](Images/7.png)
 
-For small projects this approach might be enough. In a future exercise I will explain a faster approach: **write a custom harness**.
+For small projects, this approach might be enough. In a future exercise I will explain a faster approach: **write a custom harness**.
 
 ### Triage
 
