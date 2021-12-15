@@ -153,7 +153,6 @@ export LLVM_CONFIG="llvm-config-11"
 CC=afl-clang-lto ./configure --prefix="$HOME/fuzzing_tiff/install/" --disable-shared
 AFL_USE_ASAN=1 make -j4
 AFL_USE_ASAN=1 make install
-
 ```
 
 Now, you can run the fuzzer with the following command:
