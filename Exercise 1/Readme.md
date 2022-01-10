@@ -71,7 +71,7 @@ Time to test the build. First of all, You'll need to download a few PDF examples
 ```
 cd $HOME/fuzzing_xpdf
 mkdir pdf_examples && cd pdf_examples
-wget https://github.com/mozilla/pdf.js-sample-files/raw/master/helloworld.pdf
+wget https://github.com/mozilla/pdf.js-sample-files/blob/master/helloworld.pdf
 wget http://www.africau.edu/images/default/sample.pdf
 wget https://www.melbpc.org.au/wp-content/uploads/2017/10/small-example-pdf-file.pdf
 ```
