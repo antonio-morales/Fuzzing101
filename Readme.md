@@ -18,7 +18,7 @@ If so, this is the course for you!
 | [Exercise 6](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%206)  | GIMP  | CVE-2016-4994, Bonus bugs | 7 hours | Persistent fuzzing |
 | [Exercise 7](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%207)  | VLC media player | CVE-2019-14776 | 6 hours | Partial instrumentation, Fuzzing harness |
 | [Exercise 8](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%208)  | Adobe Reader  | | 8 hours | Fuzzing closed-source applications, QEMU instrumentation|
-| Exercise 9  | will be released soon  | | |
+| [Exercise 9](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%209)  | 7-Zip  | CVE-2016-2334 | 8 hours | WinAFL, Fuzzing Windows Applications|
 | Exercise 10  | will be released soon  || |
 
 ## Changelog
