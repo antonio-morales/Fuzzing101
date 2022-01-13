@@ -4,7 +4,7 @@ For this exercise, we will fuzz **Adobe Reader** application. The goal is to fin
 
 ## What you will learn
 Once you complete this exercise you will know:
-- How to AFL++'s QEMU mode to fuzz closed-source applications
+- How to use AFL++'s QEMU mode to fuzz closed-source applications
 - How to enable persistent mode in QEMU mode
 - How to use QASAN, a binary-only sanitizer
 
