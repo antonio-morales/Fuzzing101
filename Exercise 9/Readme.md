@@ -61,7 +61,7 @@ In order to complete this exercise, you need to:
  
 ### Previous steps 
   
-First of all, we need the **Visual Studio compiler** installed in our system. For this exercise, I recommend to use Visual Studio 2019. You can find the Visual Studio 2019 Community Edition installer [here](./Resources/vs_community.exe).
+First of all, we need the **Visual Studio compiler** installed in our system. For this exercise, I recommend using Visual Studio 2019. You can find the Visual Studio 2019 Community Edition installer [here](./Resources/vs_community.exe).
   
 Then we need to select and install the **"Desktop development with C++"** package:
   
@@ -100,13 +100,13 @@ Now it's time to install 7-Zip 15.05. You can find the installer [here](./Resour
 
 ### Seed corpus creation
   
-I recommend you to create some HFS+ images to feed your seed corpus. This is a trivial task on a Mac OS.
+I recommend you create some HFS+ images to feed your seed corpus. This is a trivial task on a Mac OS.
   
-In Linux you can use **hfsprogs** utility. In Windows you can use **Paragon HFS+** (commercial software with free trial).
+In Linux, you can use **hfsprogs** utility. In Windows, you can use **Paragon HFS+** (commercial software with free trial).
  
-To make life easier, you can find an HFS example file [here](./resources/example.img).
+To make life easier, you can find an HFS example file [here](./Resources/example.img).
   
-**Warning! This is just an starting point, you will need to do some extra work on your own**
+**Warning! This is just a starting point, you will need to do some extra work on your own**
   
 ### Fuzzing time  
   
@@ -140,7 +140,7 @@ And you should see WinAFL running:
   
 ### Find a better target_offset
   
-The last step of the exercise is find a better target_offset to speed up the fuzzing process. This last part is left as an exercise for the student.
+The last step of the exercise is to find a better target_offset to speed up the fuzzing process. This last part is left as an exercise for the student.
   
 **Hint**: 7-Zip is open-source. So you can compile it in debug mode and see function names in your debugger ;)
  
