@@ -61,7 +61,7 @@ In order to complete this exercise, you need to:
  
 ### Previous steps 
   
-First of all, we need the **Visual Studio compiler** installed in our system. For this exercise, I recommend to use Visual Studio 2019. You can find the Visual Studio 2019 Community Edition installer [here](./resources/vs_community.exe).
+First of all, we need the **Visual Studio compiler** installed in our system. For this exercise, I recommend to use Visual Studio 2019. You can find the Visual Studio 2019 Community Edition installer [here](./Resources/vs_community.exe).
   
 Then we need to select and install the **"Desktop development with C++"** package:
   
@@ -96,7 +96,7 @@ If all went well, you can now find all the WinAFL binaries in the `winafl-master
   
 ### Download 7-Zip
   
-Now it's time to install 7-Zip 15.05. You can find the installer [here](./resources/7z1505.exe). 
+Now it's time to install 7-Zip 15.05. You can find the installer [here](./Resources/7z1505.exe). 
 
 ### Seed corpus creation
   
