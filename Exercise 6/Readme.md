@@ -118,7 +118,7 @@ Don't worry if you see some error messages in the testing stage.
 Now, we download and uncompress GIMP 2.8.16:
 ```
 cd ..
-wget https://mirror.klaus-uwe.me/gimp/gimp/v2.8/gimp-2.8.16.tar.bz2
+wget https://mirror.klaus-uwe.me/gimp/pub/gimp/v2.8/gimp-2.8.16.tar.bz2
 tar xvf gimp-2.8.16.tar.bz2 && cd gimp-2.8.16/
 ```
   
