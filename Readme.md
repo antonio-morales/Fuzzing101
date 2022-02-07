@@ -12,7 +12,7 @@ If so, this is the course for you!
 | ------------- | ------------- | ------------- |  ------------- | ------------- |
 | [Exercise 1](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%201) | Xpdf  | CVE-2019-13288 | 120 mins | Afl-clang-fast, Afl-fuzz, GDB |
 | [Exercise 2](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%202)  | libexif  |  CVE-2009-3895, CVE-2012-2836 | 6 hours | Afl-clang-lto, Fuzz libraries, Eclipse IDE|
-| [Exercise 3](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%203)  | TCPdump  | CVE-2017-13028 | 4 hours | ASan |
+| [Exercise 3](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%203)  | TCPdump  | CVE-2017-13028 | 4 hours | ASan, Sanitizers |
 | [Exercise 4](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%204)  | LibTIFF  | CVE-2016-9297 | 3 hours | Code coverage, LCOV |
 | [Exercise 5](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%205)  | Libxml2  | CVE-2017-9048 | 3 hours | Dictionaries, Basic parallelization, Fuzzing command-line arguments  |
 | [Exercise 6](https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise%206)  | GIMP  | CVE-2016-4994, Bonus bugs | 7 hours | Persistent fuzzing, Fuzzing interactive applications|
