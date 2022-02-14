@@ -176,4 +176,11 @@ The rules are as follows:
 - Send your solution by **28 February** to antoniomoralesmaldonado@gmail.com
 - The winners will receive a coupon to spend in the [GitHub Shop](https://thegithubshop.com/)
 
-## Next hint -> 9th February
+## Hints
+- 1º hint: 
+
+```
+git checkout 7.5.288.22
+```
+
+## Next hint -> 17th February
