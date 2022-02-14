@@ -23,6 +23,7 @@ If so, this is the course for you!
 
 ## Changelog
 
+- 02/14/2022: Fixed some 'wget' typos in Exercise 5
 - 11/25/2021: Exercise 3 updated with some fixes.
 
 
