@@ -131,7 +131,7 @@ and you should see something like that
 First of all, we need to get some XML samples. We're gonna use the **SampleInput.xml** provided in this repository:
 ```
 mkdir afl_in && cd afl_in
-wget https://github.com/antonio-morales/Fuzzing101/blob/main/Exercise%205/SampleInput.xml
+wget https://raw.githubusercontent.com/antonio-morales/Fuzzing101/main/Exercise%205/SampleInput.xml
 cd ..
 ```
   
@@ -140,7 +140,7 @@ cd ..
 Now, you need to create an XML dictionary. Alternatively, you can use the XML dictionary provided with AFL++: 
 ```
 mkdir dictionaries && cd dictionaries
-wget https://github.com/AFLplusplus/AFLplusplus/blob/stable/dictionaries/xml.dict
+wget https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/stable/dictionaries/xml.dict
 cd ..
 ```
 ### Fuzzing time
