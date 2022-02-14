@@ -67,7 +67,7 @@ Thanks for their help:
 - [Xu Hanyu](https://github.com/Mundi-Xu)
 - [tclan126](https://github.com/tclan126)
 - [epi052](https://github.com/epi052)
-- [Jeremias Gomes]()
+- [Jeremias Gomes](https://github.com/j3r3mias)
 
 ## Contact
 
