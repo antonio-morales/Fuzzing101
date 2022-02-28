@@ -183,4 +183,4 @@ The rules are as follows:
 git checkout 7.5.288.22
 ```
 
-## Next hint -> 17th February
+## Next hint -> Will be released soon
