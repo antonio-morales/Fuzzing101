@@ -183,4 +183,4 @@ The rules are as follows:
 git checkout 7.5.288.22
 ```
 
-## Next hint -> Will be released soon
+## This challenge ended on March 1, 2022. Thank you for your submissions!!
