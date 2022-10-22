@@ -34,7 +34,7 @@ If so, this is the course for you!
 ## Requirements
 - All you need for this course is a running Linux system with an internet connection. You will find a suitable VMware image in the exercises.
 - At least basic Linux skills are highly recommended.
-- All the exercises have been tested on Ubuntu **20.04.2 LTS**. You can download it from [here]([https://old-releases.ubuntu.com/releases/20.04.0/](https://old-releases.ubuntu.com/releases/20.04.0/#:~:text=15K-,ubuntu%2D20.04.2%2Ddesktop%2Damd64.iso,215K,-ubuntu%2D20.04.2%2Ddesktop))
+- All the exercises have been tested on Ubuntu **20.04.2 LTS**. You can download it from [here](https://old-releases.ubuntu.com/releases/20.04.0/#:~:text=15K-,ubuntu%2D20.04.2%2Ddesktop%2Damd64.iso,215K,-ubuntu%2D20.04.2%2Ddesktop)
 - In this course we're going to use [AFL++](https://github.com/AFLplusplus/AFLplusplus), a newer and superior fork of Michał "lcamtuf" Zalewski's AFL, for solving the fuzzing exercises.
 
 ## What is fuzzing?
