@@ -70,9 +70,4 @@ Thanks for their help:
 - [epi052](https://github.com/epi052)
 - [Jeremias Gomes](https://github.com/j3r3mias)
 
-## Contact
-
-Are you stuck and looking for help? Do you have suggestions for making this course better or just positive feedback so that we can create more fuzzing content?
-Do you want to share your fuzzing experience with the community?
-Join the GitHub Security Lab Slack and head to the `#fuzzing` channel. [Request an invite to the GitHub Security Lab Slack](mailto:securitylab-social@github.com?subject=Request%20an%20invite%20to%20the%20GitHub%20Security%20Lab%20Slack)
 
