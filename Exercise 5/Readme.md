@@ -105,7 +105,7 @@ mkdir Fuzzing_libxml2 && cd Fuzzing_libxml2
 
 Download and uncompress libxml2-2.9.4.tar.gz
 ```
-wget http://xmlsoft.org/download/libxml2-2.9.4.tar.gz
+wget http://xmlsoft.org/sources/libxml2-2.9.4.tar.gz
 tar xvf libxml2-2.9.4.tar.gz && cd libxml2-2.9.4/
 ```
 
