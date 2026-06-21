@@ -144,7 +144,7 @@ You can download my partial instrumentation file [here](./Partial_instrumentatio
   
 ### Minor changes
   
-To speed-up the ASF fuzzing speed, I recommend you to apply this patch to ``modules/demux/libasf.c``  (no more clues at the moment ;) ) : [speedup.patch](./speedup.patch)
+To speed-up the ASF fuzzing speed, I recommend you to apply this patch to ``modules/demux/asf/libasf.c``  (no more clues at the moment ;) ) : [speedup.patch](./speedup.patch)
   
 ### Fuzzing time  
   
