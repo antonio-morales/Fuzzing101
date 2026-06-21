@@ -51,15 +51,14 @@ afl-qemu-trace --help
 
 and you should see something like that:
 
-![](Images/0.png)
+![](Images/12.png)
 
-If it's not already installed, you can build and install it with:
+If it's not already installed or not for i386, you can build and install it with:
 
 ```
 sudo apt install ninja-build libc6-dev-i386
 cd ~/Downloads/AFLplusplus/qemu_mode/
 CPU_TARGET=i386 ./build_qemu_support.sh
-make distrib
 sudo make install
 ```
 
