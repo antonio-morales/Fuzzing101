@@ -181,7 +181,7 @@ After a while, you should have multiple crashes:
 To debug a program built with ASan is so much easier than in the previous exercises. All you need to do is to feed the program with the crash file:
   
 ```
-$HOME/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r '/home/antonio/fuzzing_tcpdump/out/default/crashes/id:000000,sig:06,src:002318+001583,time:10357087,op:splice,rep:8'
+$HOME/fuzzing_tcpdump/install/sbin/tcpdump -vvvvXX -ee -nn -r '$HOME/fuzzing_tcpdump/out/default/crashes/id:000000,sig:06,src:002318+001583,time:10357087,op:splice,rep:8'
 ```
 
 and you will get a nice summary of the crash, including the execution trace:
